@@ -17,6 +17,11 @@ function launch_vm {
   2>&1 &
 }
 
+if [ "$KERN_MOD" == "Y" ]; then
+	./module.sh
+	exit 0
+fi
+
 cd $KERNEL_TREE_PATH
 
 # Revert the kernel to the state previous to the patch
@@ -130,4 +135,5 @@ then
 	done
 else
 	echo "Wrong CASE variable"
+fi
 fi
